@@ -1,0 +1,24 @@
+{
+  "name": "dmanager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zsore7/DManager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zsore7/DManager/issues"
+  },
+  "homepage": "https://github.com/zsore7/DManager#readme",
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "electron": "^3.0.3",
+    "jquery": "^3.3.1"
+  }
+}
