@@ -1,4 +1,4 @@
-dm_utils = require('./js/dm_utils.js')
+dm_utils = require('./dm_utils.js')
 
 alert('index.js is loaded')
 

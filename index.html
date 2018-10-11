@@ -4,28 +4,57 @@
     <meta charset="UTF-8">
     <title>Hello World!</title>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-        <script>
-            test = require('./js/test.js')
-            index = require('./index.js')
-        </script>
+
+    <!-- Link all page imports here -->
+    <link rel="import" href="./pages/character-sheet.html" id="charsheet_import">
+
+    <script>
+        test = require('./assets/test.js')
+        index = require('./assets/index.js')
+    </script>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+    <nav id="navigator">
+        <button id="move_to_main" type="button" onclick="moveToMain()">Move to Main Page</button>
+        <button id="move_to_char" type="button" onclick="moveToChar()">Move to Char Sheet</button>
+    </nav>
 
-    <button type="button" onclick="test.hello()">Click Me!</button>
+    <div id="main_content">
+        <h1>Hello World!</h1>
+        <!-- All of the Node.js APIs are available in this renderer process. -->
+        We are using Node.js <script>document.write(process.versions.node)</script>,
+        Chromium <script>document.write(process.versions.chrome)</script>,
+        and Electron <script>document.write(process.versions.electron)</script>.
 
-    <input id="n" type="text"></input>
-    <input id="s" type="text"></input>
-    <button type="button" onclick="index.test_roll()">Test Roll Dice</button>
-    <p id="out"></p>
+        <button type="button" onclick="test.hello()">Click Me!</button>
+
+        <input id="n" type="text"></input>
+        <input id="s" type="text"></input>
+        <button type="button" onclick="index.test_roll()">Test Roll Dice</button>
+        <p id="out"></p>
+    </div>
+
+    <script>
+        mainContentContainer = document.getElementById("main_content");
+        mainPageContent = mainContentContainer.innerHTML;
+
+        function moveToChar(){
+            mainPageContent = mainContentContainer.innerHTML;
+
+            var pageImport = document.getElementById("charsheet_import");
+            var pages = pageImport.import;
+            page = pages.getElementById('page-template');
+            mainContentContainer.innerHTML = page.innerHTML;
+        }
+
+        function moveToMain(){
+            mainContentContainer.innerHTML = mainPageContent;
+        }
+    </script>
 
     <script>
       // You can also require other files to run in this process
-      require('./js/renderer.js')
+      require('./render-process/renderer.js')
     </script>
   </body>
 </html>
