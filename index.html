@@ -7,6 +7,8 @@
 
     <!-- Link all page imports here -->
     <link rel="import" href="./pages/character-sheet.html" id="charsheet_import">
+    <link rel="import" href="./pages/bestiary.html" id="bestiary_import">
+
 
     <script>
         test = require('./assets/test.js')
@@ -17,6 +19,7 @@
     <nav id="navigator">
         <button id="move_to_main" type="button" onclick="moveToMain()">Move to Main Page</button>
         <button id="move_to_char" type="button" onclick="moveToChar()">Move to Char Sheet</button>
+        <button id="move_to_bestiary" type="button" onclick="moveToBestiary()">Move to Bestiary</button>
     </nav>
 
     <div id="main_content">
@@ -47,8 +50,23 @@
             mainContentContainer.innerHTML = page.innerHTML;
         }
 
+
+        function moveToBestiary(){
+            mainPageContent = mainContentContainer.innerHTML;
+
+            var pageImport = document.getElementById("bestiary_import");
+            var pages = pageImport.import;
+            page = pages.getElementById('page-template');
+            mainContentContainer.innerHTML = page.innerHTML;
+        }
+
         function moveToMain(){
             mainContentContainer.innerHTML = mainPageContent;
+        }
+
+        function bestiarySearch(){
+            text = document.getElementById("bestiary-search").value;
+            console.log(text);
         }
     </script>
 
